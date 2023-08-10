@@ -19,5 +19,6 @@
 <br/> 
 <h1>Instalação</h1>
 * Clone o repositório: git clone https://github.com/seu-usuario/casa-do-kit.git
+
 * Configure o ambiente de desenvolvimento (servidor web, banco de dados, etc.).
 * Abra o navegador e acesse o site localmente.
