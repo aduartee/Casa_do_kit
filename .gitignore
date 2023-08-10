@@ -1,0 +1,8 @@
+# Arquivos temporários ou gerados automaticamente
+*.log
+*.tmp
+*.swp
+.DS_Store
+
+# Arquivo de conexão
+conn.php

@@ -1,0 +1,164 @@
+body {
+  background-color: #f9f9f9;
+}
+
+#ofertas {
+  border-bottom: 1px solid #f79fff;
+}
+
+.product-image {
+  max-height: 200px;
+}
+
+.zoom-image {
+  overflow: hidden;
+  position: relative;
+}
+
+.btn-buy {
+  background-color: #ff00ea;
+  border-color: #ff00ea;
+  color: #ffffff;
+}
+
+.btn-buy:hover {
+  background-color: #ca29bd;
+  border-color: #be20b1;
+
+}
+
+.zoom-image .btn-buy {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.zoom-image:hover .btn-buy {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+#promo {
+  margin-top: 2%;
+}
+
+.card {
+  max-width: 300px;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-img-top {
+  object-fit: cover;
+  height: 200%;
+  border-radius: 5px 5px 0 0;
+}
+
+.card-body {
+  height: 40%;
+  padding: 10px;
+}
+
+.preco {
+  font-size: 20px;
+}
+
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.card:hover {
+  transition: 0.5s ease;
+  transform: scale(1.04);
+  box-shadow: 0 4px 8px rgba(213, 2, 255, 0.288);
+}
+
+.imagem-produto {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+
+
+h3 {
+  font-size: 18px;
+  margin: 0;
+  color: #25012e;
+}
+
+p {
+  font-size: 14px;
+  color: #020202;
+}
+
+#vodka {
+  text-decoration: none;
+}
+
+#absolut {
+  width: 100%;
+  max-height: 370px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.img-fluid {
+  box-shadow: 0 20px 8px rgba(44, 44, 44, 0.288);
+  width: 800px;
+  height: auto;
+}
+
+.adiciona-pedido {
+  display: flex;
+  align-items: center;
+}
+
+.btn-diminuir {
+  font-size: 13px;
+  padding: 8px 16px;
+  cursor: pointer;
+  background-color: #77006d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.btn-diminuir:hover {
+  background-color: #ff00ea;
+}
+
+.btn-aumentar {
+  font-size: 13px;
+  padding: 8px 16px;
+  cursor: pointer;
+  background-color: #79016f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.btn-aumentar:hover {
+  background-color: #ff00ea;
+}
+
+#quantidade {
+  margin: 0 10px;
+  font-size: 18px;
+}
+
+.descricao-detalhada {
+  text-align: justify;
+}
