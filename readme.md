@@ -1,7 +1,7 @@
 <h1>Casa do Kit - Site de Comércio de Bebidas</h1>
 <p></p>Bem-vindo ao repositório do projeto Casa do Kit, um site de comércio eletrônico dedicado à venda de bebidas variadas. Este projeto é desenvolvido em PHP, HTML/CSS, JavaScript e jQuery.</p>
 <br/> 
-<h1>isão Geral</h1>
+<h1>Visão Geral</h1>
 <p>O projeto Casa do Kit é uma plataforma online que permite aos clientes explorar, selecionar e comprar uma ampla variedade de bebidas. O site é desenvolvido utilizando uma combinação de tecnologias web, oferecendo uma experiência de compra intuitiva e agradável aos usuários.</p>
 <br/> 
 <h1>Tecnologias Utilizadas</h1>
