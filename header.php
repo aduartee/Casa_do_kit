@@ -9,7 +9,10 @@
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 <link rel="stylesheet" href="<?= BASE_URL ?>css/css.css">
-<script src="../js/validaQtd.js"></script>
+<script src="<?= BASE_URL ?>js/validaQtd.js"></script>
+<script src="<?= BASE_URL ?>js/adicionaCarrinho.js"></script>
+<script src="<?= BASE_URL ?>js/abirDetalhes.js"></script>
+
 
 <title>Casa do Kit</title>
 
@@ -83,13 +86,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                     <li>
-                        <a class="dropdown-item" href="#">Some news</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">Another news</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="#">Sobre nós</a>
                     </li>
                 </ul>
             </div>

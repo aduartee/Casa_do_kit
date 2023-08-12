@@ -72,17 +72,18 @@ switch ($row['tipo_produto']) {
 
         <p class="fs-6 fw-semibold">Escolha o tamanho desejado:</p>
         <div class="mw-100">
-        <select id="tamanho" class="form-select mb-4 mw-10" style="width: 100px;">
-          <?php
-          $volumes = explode(',', $row['volume']); // Divide os valores separados por vírgula em um array
-          foreach ($volumes as $volume) {
-            $volume = trim($volume); // Remove espaços em branco antes e depois
-            echo "<option value=\"$volume\">$volume</option>";
-          }
-          ?>
-        </select>
+          <select id="tamanho" class="form-select mb-4 mw-10" style="width: 100px;">
+            <?php
+            $volumes = explode(',', $row['volume']); // Divide os valores separados por vírgula em um array
+            foreach ($volumes as $volume) {
+              $volume = trim($volume); // Remove espaços em branco antes e depois
+              echo "<option id=\"volume\" value=\"$volume\">$volume</option>";
+            }
+            ?>
+          </select>
         </div>
-        <a href="bebidas/produto.php?id=<?= $row['id'] ?>" class="btn btn-primary btn-buy">Comprar</a>
+        <a onclick="adicionarCarrinho(<?= $row['id'] ?> , <?= $row['nome'] ?>, <?= $row['disponibilidade'] ?>, <?= $row['preco'] ?>, <?= BASE_URL . $row['caminho_da_imagem'] ?>)" 
+           class="btn btn-primary btn-buy">Comprar</a>
 
 
       </div>

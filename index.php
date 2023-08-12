@@ -197,30 +197,52 @@ while ($row = $result->fetch_assoc()) {
         </div>
       <?php endforeach; ?>
     </div>
-  
+
     <div class="row">
       <div class="col-md-12">
-        <h1 id="promo" class="mb-7"><span id="ofertas">Espumantes</span></h1>
+        <h1 id="promo" class="mb-7"><span id="ofertas">Licores</span></h1>
       </div>
     </div>
 
-  <div class="row">
-    <?php foreach ($licores as $row) : ?>
-      <div class="col-md-3">
-        <div class="card mb-3">
-          <div class="zoom-image">
-            <img src="<?= BASE_URL . $row['caminho_da_imagem'] ?>" alt="Licores <?= $row['id'] ?>" class="card-img-top product-image">
-            <a href="bebidas/produto.php?id=<?= $row['id'] ?>" class="btn btn-primary btn-buy">Comprar</a>
+    <div class="cards-container">
+    <div class="row">
+        <?php foreach ($licores as $row) : ?>
+          <div class="col-md-3">
+            <div class="card mb-3">
+              <div class="zoom-image" product-image>
+                <img src="<?= BASE_URL . $row['caminho_da_imagem'] ?>" alt="Licores <?= $row['id'] ?>" class="card-img-top product-image">
+                <a href="#" class="btn btn-primary btn-buy" data-id="<?= $row['id'] ?>" data-nome="<?= $row['nome'] ?>" data-preco="<?= $row['preco'] ?>" data-imagem="<?= BASE_URL . $row['caminho_da_imagem'] ?>" 
+                   data-descricao="<?= $row['descricao'] ?>" data-disponibilidade="<?= $row['disponibilidade'] ?>" data-volume="<?= $row['volume'] ?>" onclick="abrirDetalhes(event)">Comprar</a>
+              </div>
+
+              <div class="card-body">
+                <h5 class="card-title" id="nomeProduto"><?= $row['nome']; ?></h5>
+                <p class="card-text" id="descricaoProduto"><?= $row['descricao']; ?></p>
+                <p class="card-text" id="descricaoProduto"><?= $row['volume']; ?></p>
+                <p class="preco" id="precoProduto"><b>Preço: R$ <?= number_format($row['preco'], 2, ',', '.'); ?></b></p>
+          
+              </div>
+            </div>
           </div>
-          <div class="card-body">
-            <h5 class="card-title"><?= $row['nome']; ?></h5>
-            <p class="card-text"><?= $row['descricao']; ?></p>
-            <p class="preco"><b>Preço: R$ <?= number_format($row['preco'], 2, ',', '.'); ?></b></p>
-          </div>
-        </div>
+        <?php endforeach; ?>
       </div>
-    <?php endforeach; ?>
-  </div>
+    </div>
+
+
+    <div id="product-details" class="product-details">
+      <span class="close-button" onclick="fecharDetalhes()">&times;</span>
+      <div class="product-details-content">
+        <img id="product-details-image" src="<?= BASE_URL ?>">
+        <h2 id="product-details-name">Nome do Produto</h2>
+        <p id="product-details-description">Descrição do Produto</p>
+        <p id="product-details-price">Preço: R$ 0.00</p>
+        <p id="product-details-availability">Disponibilidade: Em estoque</p>
+        <p id="product-details-volume">Volume:></p>
+        <button id="add-to-cart-button" class="btn btn-primary mb-20">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+
+
   </div>
 </body>
 
