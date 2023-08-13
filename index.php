@@ -240,7 +240,12 @@ while ($row = $result->fetch_assoc()) {
         <p id="product-details-availability" class="<?= $disponibildadeClass ?>">Disponibilidade: Em estoque</p>
         <p id="product-details-description">Descrição do Produto</p>
         <p id="product-details-volume">Volume:</p>
-        <button id="add-to-cart-button" class="btn btn-primary mb-20">Adicionar ao Carrinho</button>
+        <div class="adiciona-pedido mb-4">
+          <button class="btn-diminuir" onclick="diminuirQuantidade()">-</button>
+          <span id="quantidade">0</span>
+          <button class="btn-aumentar" onclick="aumentarQuantidade()">+</button>
+        </div>
+        <button id="add-to-cart-button" class="btn btn-primary btn-buy mb-20">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>

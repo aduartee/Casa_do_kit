@@ -10,6 +10,8 @@
 <!-- BOXICONS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css">
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="stylesheet" href="<?= BASE_URL ?>css/css.css">
 <script src="<?= BASE_URL ?>js/validaQtd.js"></script>
 <script src="<?= BASE_URL ?>js/adicionaCarrinho.js"></script>
