@@ -235,3 +235,34 @@ body {
   max-height: 700px; /* Altura máxima de 300 pixels (ajuste conforme necessário) */
   object-fit: contain; /* Para ajustar a imagem dentro do contêiner */
 }
+
+#add-to-cart-button { 
+  margin-bottom: 10%;
+}
+
+.icon-above-image {
+  position: absolute;
+  top: 20px;
+  left: 6%;
+  transform: translateX(-50%);
+  font-size: 24px; 
+  color: #ffffff; 
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5); 
+  cursor: pointer;
+}
+
+.icon-above-image:hover{
+  color:rgb(189, 63, 63);
+  transition: 1s ease-out;
+}
+
+#product-details-description { 
+  text-align: justify;
+  max-width: 90%;
+  max-height: auto;
+  margin-left: 25px;
+}
+
+#product-details-name {
+  margin-top:15px;
+}

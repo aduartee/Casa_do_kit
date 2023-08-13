@@ -42,7 +42,7 @@ function abrirDetalhes(event) {
 
     // Ação ao clicar no botão "Adicionar ao Carrinho"
     addToCartButton.addEventListener("click", function () {
-        // Aqui você pode adicionar o produto ao carrinho usando AJAX ou outra abordagem
+        // Aguardando implementação com AJAX
         // Exemplo: addToCart(product.id);
         alert("Produto adicionado ao carrinho!");
     });

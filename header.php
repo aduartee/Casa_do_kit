@@ -6,14 +6,14 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
 <!-- MDB -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet" />
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<!-- BOXICONS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css">
+
 <link rel="stylesheet" href="<?= BASE_URL ?>css/css.css">
 <script src="<?= BASE_URL ?>js/validaQtd.js"></script>
 <script src="<?= BASE_URL ?>js/adicionaCarrinho.js"></script>
 <script src="<?= BASE_URL ?>js/abirDetalhes.js"></script>
-
-
 <title>Casa do Kit</title>
 
 
