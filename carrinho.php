@@ -1,4 +1,7 @@
 <?php
+//Adicionar o session_start()
+session_start();
+
 if (isset($_POST['productId']) && isset($_POST['productName']) && isset($_POST['productPrice'])) {
     $productId = $_POST['productId'];
     $productName = $_POST['productName'];
