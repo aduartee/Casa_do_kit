@@ -1,4 +1,6 @@
-<?php define('BASE_URL', 'http://localhost/casadokit/')?>
+<?php define('BASE_URL', 'http://localhost/casadokit/'); 
+session_start();
+?>
 
 <!-- Font Awesome -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -20,7 +22,7 @@
 
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <!-- Container wrapper -->
     <div class="container-fluid">
         <!-- Toggle button -->
@@ -42,7 +44,7 @@
                     <i class="fas fa-search"></i>
                 </button>
             </form>
-              
+
 
 
 
@@ -75,13 +77,17 @@
 
         <!-- Right elements -->
         <div class="d-flex align-items-center">
-            <!-- Icon -->
-            <a class="text-reset me-3" href="#">
-                <i class="fas fa-shopping-cart text-white"></i>
-            </a>
+            <!-- Carrinho -->
+            <div id="carrinho" class="carrinho-icon me-10">
+                <a href="<?= BASE_URL ?>exibeCarrinho.php" class="text-reset" href="#">
+                    <i class="fas fa-shopping-cart text-white"></i>
+                    <span id="contador-carrinho">0</span>
+                </a>
+            </div>
+
 
             <!-- Notifications -->
-            <div class="dropdown">
+            <div class="dropdown me-1">
                 <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-bell text-white"></i>
                     <span class="badge rounded-pill badge-notification bg-danger">1</span>

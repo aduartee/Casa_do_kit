@@ -40,11 +40,35 @@ function abrirDetalhes(event) {
     productImageElement.src = product.image;
 
 
-    // Ação ao clicar no botão "Adicionar ao Carrinho"
     addToCartButton.addEventListener("click", function () {
-        // Aguardando implementação com AJAX
-        // Exemplo: addToCart(product.id);
-        alert("Produto adicionado ao carrinho!");
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "carrinho.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                    if (response.success) {
+                        alert(response.message);
+                        const contadorCarrinho = document.getElementById("contador-carrinho");
+                        contadorCarrinho.textContent = parseInt(contadorCarrinho.textContent) + 1;
+                        contadorCarrinho.style.display = "block";
+                        window.location.href = "exibeCarrinho.php";
+                    } else {
+                        alert("Erro ao adicionar o produto ao carrinho.");
+                    }
+                }
+            }
+        };
+
+        // Preparar dados para enviar
+        const data = new URLSearchParams();
+        data.append("productId", product.id);
+        data.append("productName", product.name);
+        data.append("productPrice", product.price);
+
+        xhr.send(data);
+
     });
 
     productDetails.style.right = "0";
@@ -56,6 +80,6 @@ function fecharDetalhes() {
     const cardsContainer = document.querySelector(".cards-container");
     cardsContainer.classList.remove("cards-ajuste");
     productDetails.style.right = "-100%";
-    
+
 
 }
