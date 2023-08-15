@@ -53,7 +53,8 @@ function abrirDetalhes(event) {
                         const contadorCarrinho = document.getElementById("contador-carrinho");
                         contadorCarrinho.textContent = parseInt(contadorCarrinho.textContent) + 1;
                         contadorCarrinho.style.display = "block";
-                        window.location.href = "exibeCarrinho.php";
+                        // Redirecionar para a página de exibição do carrinho com os dados do produto
+                        window.location.href = "exibeCarrinho.php?id=" + product.id + "&name=" + encodeURIComponent(product.name) + "&price=" + product.price;
                     } else {
                         alert("Erro ao adicionar o produto ao carrinho.");
                     }
@@ -68,9 +69,7 @@ function abrirDetalhes(event) {
         data.append("productPrice", product.price);
 
         xhr.send(data);
-
     });
-
     productDetails.style.right = "0";
 }
 

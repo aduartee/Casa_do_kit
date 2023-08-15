@@ -1,5 +1,5 @@
 <?php
-//Adicionar o session_start()
+session_name('carrinho');
 session_start();
 
 if (isset($_POST['productId']) && isset($_POST['productName']) && isset($_POST['productPrice'])) {
@@ -16,9 +16,9 @@ if (isset($_POST['productId']) && isset($_POST['productName']) && isset($_POST['
     // Adicionar o produto à sessão do carrinho
     $_SESSION['carrinho'][] = $produto;
 
-    $response = array('success' => true, 'message' => 'Produto adicionado ao carrinho!');
+    $response = ['success' => true, 'message' => 'Produto adicionado ao carrinho!'];
 } else {
-    $response = array('success' => false, 'message' => 'Erro ao adicionar o produto ao carrinho.');
+    $response = ['success' => false, 'message' => 'Erro ao adicionar o produto ao carrinho.'];
 }
 
 header('Content-Type: application/json');

@@ -1,4 +1,5 @@
 <?php define('BASE_URL', 'http://localhost/casadokit/'); 
+session_name('inicial');
 session_start();
 ?>
 
@@ -100,9 +101,9 @@ session_start();
             </div>
             <!-- Avatar -->
             <div class="dropdown">
-                <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                <!-- <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                     <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
-                </a>
+                </a> -->
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                     <li>
                         <a class="dropdown-item" href="#">My profile</a>
