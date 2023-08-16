@@ -6,15 +6,19 @@ if (isset($_POST['productId']) && isset($_POST['productName']) && isset($_POST['
     $productId = $_POST['productId'];
     $productName = $_POST['productName'];
     $productPrice = $_POST['productPrice'];
+    $productImage = $_POST['productImage'];
+
 
     $produto = [
         'id' => $productId,
         'nome' => $productName,
-        'preco' => $productPrice
+        'preco' => $productPrice,
+        'imagem' => $productImage
     ];
 
     // Adicionar o produto à sessão do carrinho
     $_SESSION['carrinho'][] = $produto;
+    
 
     $response = ['success' => true, 'message' => 'Produto adicionado ao carrinho!'];
 } else {

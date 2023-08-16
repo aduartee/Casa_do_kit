@@ -1,6 +1,4 @@
 <?php define('BASE_URL', 'http://localhost/casadokit/'); 
-session_name('inicial');
-session_start();
 ?>
 
 <!-- Font Awesome -->
@@ -17,7 +15,6 @@ session_start();
 
 <link rel="stylesheet" href="<?= BASE_URL ?>css/css.css">
 <script src="<?= BASE_URL ?>js/validaQtd.js"></script>
-<script src="<?= BASE_URL ?>js/adicionaCarrinho.js"></script>
 <script src="<?= BASE_URL ?>js/abirDetalhes.js"></script>
 <title>Casa do Kit</title>
 

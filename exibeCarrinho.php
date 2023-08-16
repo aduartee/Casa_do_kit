@@ -1,10 +1,9 @@
 <?php
-require_once("header.php");
+session_name('carrinho');
+session_start();
+include('header.php');
+require_once("conn.php");
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_name('carrinho');
-    session_start();
-}
 
 // Verifique se há produtos no carrinho
 if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
@@ -13,38 +12,54 @@ if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
     $carrinho = [];
 }
 
-// Recupere os dados do produto da URL
-$produtoId = $_GET['id'];
-$produtoNome = urldecode($_GET['name']);
-$produtoPreco = $_GET['price'];
+
+function calcularTotal($carrinho)
+{
+    $total = 0;
+
+    foreach ($carrinho as $itemPrice) {
+        $total += $itemPrice['preco'];
+    }
+
+    return $total;
+}
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrinho de Compras</title>
-</head>
 
 <body>
-    <h1>Seu Carrinho de Compras</h1>
+    <header class="header">
+        <h1 class="header-title">Carrinho de Compras</h1>
+    </header>
 
-    <?php if (!empty($produtoId) && !empty($produtoNome) && !empty($produtoPreco)) : ?>
-        <label>ID do Produto: <?= $produtoId ?></label>
-        <label>Nome do Produto: <?= $produtoNome ?></label>
-        <label>Preço do Produto: R$ <?= number_format($produtoPreco, 2, ',', '.') ?></label>
-    <?php endif; ?>
+    <main class="main">
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th class="cart-table-header">Produto</th>
+                    <th class="cart-table-header"></th>
+                    <th class="cart-table-header">Preço</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($carrinho as $produto) :?>
+                    <tr class="cart-item2">
+                        <td class="cart-item-image"><img src="<?= $produto['imagem'] ?>" width="50"></td>
+                        <td class="cart-item-name"><?= $produto['nome'] ?></td>
+    
+                        <td class="cart-item-price">R$ <?= number_format($produto['preco'], 2, ',', '.') ?></td>
 
-    <ul>
-        <?php foreach ($carrinho as $produto) : ?>
-            <li>
-                <h2><?= $produto['nome'] ?></h2>
-                <p>Preço: R$ <?= number_format($produto['preco'], 2, ',', '.') ?></p>
-            </li>
-        <?php endforeach; ?>
-    </ul>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+
+        <?php if (empty($carrinho)) : ?>
+            <p class="empty-cart-message">Seu carrinho está vazio.</p>
+        <?php endif; ?>
+    </main>
+
+    <footer class="footer">
+        <p id="footer-total">Total: R$ <?= number_format(calcularTotal($carrinho), 2, ',', '.') ?></p>
+    </footer>
+
 </body>
-
-</html>
