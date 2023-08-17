@@ -19,7 +19,10 @@ function abrirDetalhes(event) {
     const descricaoProduto = button.getAttribute("data-descricao");
     const disponibilidadeProduto = button.getAttribute("data-disponibilidade");
     const cardsContainer = document.querySelector(".cards-container");
+    const qtdProduto = parseInt(document.getElementById("quantidade").textContent);
+
     cardsContainer.classList.add("cards-ajuste");
+
 
     const product = {
         id: productId,
@@ -28,7 +31,8 @@ function abrirDetalhes(event) {
         image: imagemProduto,
         description: descricaoProduto,
         availability: disponibilidadeProduto,
-        volume: volumeProduto
+        volume: volumeProduto, 
+        amount: qtdProduto
     };
 
     // Preencha as informações do produto na aba de detalhes
@@ -66,8 +70,11 @@ function abrirDetalhes(event) {
         data.append("productName", product.name);
         data.append("productPrice", product.price);
         data.append("productImage", product.image);
+        data.append("productAmount", product.amount);
 
         xhr.send(data);
+
+        console.log(product.amount);
 
     });
     productDetails.style.right = "0";

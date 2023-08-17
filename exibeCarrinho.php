@@ -38,15 +38,21 @@ function calcularTotal($carrinho)
                     <th class="cart-table-header">Produto</th>
                     <th class="cart-table-header"></th>
                     <th class="cart-table-header">Preço</th>
+                    <th class="cart-table-header">Quantidade</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($carrinho as $produto) :?>
+                <?php foreach ($carrinho as $produto) : ?>
                     <tr class="cart-item2">
                         <td class="cart-item-image"><img src="<?= $produto['imagem'] ?>" width="50"></td>
                         <td class="cart-item-name"><?= $produto['nome'] ?></td>
-    
                         <td class="cart-item-price">R$ <?= number_format($produto['preco'], 2, ',', '.') ?></td>
+                        <td>
+                            <div class="quantity-input">
+                                <input type="number" class="quantity" min="1" value="<?= $produto['quantidade'] ?>" data-product-id="<?= $produto['id'] ?>">
+                                <button class="update-quantity-btn" onclick="updateCartAmount()" data-product-id="<?= $produto['id'] ?>">Atualizar</button>
+                            </div>
+                        </td>
 
                     </tr>
                 <?php endforeach; ?>
@@ -62,4 +68,5 @@ function calcularTotal($carrinho)
         <p id="footer-total">Total: R$ <?= number_format(calcularTotal($carrinho), 2, ',', '.') ?></p>
     </footer>
 
+<script src="updateCart.js"></script>
 </body>

@@ -1,4 +1,4 @@
-let quantidade = 0;
+let quantidade = 1;
 
 function atualizarQuantidade() {
   const quantidadeElement = document.getElementById('quantidade');
@@ -11,7 +11,7 @@ function aumentarQuantidade() {
 }
 
 function diminuirQuantidade() {
-  if (quantidade > 0) {
+  if (quantidade > 1 ){
     quantidade--;
     atualizarQuantidade();
   }

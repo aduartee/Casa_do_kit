@@ -31,8 +31,8 @@
         <!-- Collapsible wrapper -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Navbar brand -->
-            <a class="navbar-brand mt-1 mt-lg-0" href="#">
-                <img src="img/casadokit.png" height="100" alt="MDB Logo" loading="lazy" />
+            <a class="navbar-brand mt-1 mt-lg-0" href="index.php">
+                <img src="img/casadokit.png" height="100" href="index.php" alt="Logo Casa do Kit" loading="lazy" />
             </a>
             <!-- Left links -->
 
