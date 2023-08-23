@@ -33,6 +33,9 @@ while ($row = $result->fetch_assoc()) {
 }
 ?>
 
+<div id="toast" class="toast"></div>
+
+
 <body>
 
   <div class="container mt-5 text-center">

@@ -44,6 +44,19 @@ function abrirDetalhes(event) {
     productImageElement.src = product.image;
 
 
+    function showToast(message, type) {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.classList.add(type);
+        toast.style.display = 'block';
+    
+        setTimeout(() => {
+            toast.style.display = 'none';
+            toast.classList.remove(type);
+        }, 3000);
+    }
+
+
     addToCartButton.addEventListener("click", function () {
         const xhr = new XMLHttpRequest();
         xhr.open("POST", "carrinho.php", true);
@@ -53,12 +66,12 @@ function abrirDetalhes(event) {
                 if (xhr.status === 200) {
                     const response = JSON.parse(xhr.responseText);
                     if (response.success) {
-                        alert(response.message);
+                        showToast("Produto adicionado ao carrinho", "success");
                         const contadorCarrinho = document.getElementById("contador-carrinho");
                         contadorCarrinho.textContent = parseInt(contadorCarrinho.textContent) + 1;
                         contadorCarrinho.style.display = "block";
                     } else {
-                        alert("Erro ao adicionar o produto ao carrinho.");
+                        showToast("Erro ao adicionar o produto ao carrinho.", "error");
                     }
                 }
             }
