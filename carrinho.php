@@ -2,25 +2,24 @@
 session_name('carrinho');
 session_start();
 
-if (isset($_POST['productId']) && isset($_POST['productName']) && isset($_POST['productPrice'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $productId = $_POST['productId'];
     $productName = $_POST['productName'];
     $productPrice = $_POST['productPrice'];
-    $productImage = $_POST['productImage'];
     $productAmount = $_POST['productAmount'];
+    $poductImage = $_POST['productImage'];
 
-
-    $produto = [
-        'id' => $productId,
-        'nome' => $productName,
-        'preco' => $productPrice,
-        'imagem' => $productImage,
-        'quantidade' => $productAmount
-    ];
-
-    // Adicionar o produto à sessão do carrinho
-    $_SESSION['carrinho'][] = $produto;
-    
+    if (isset($_SESSION['carrinho'][$productId])) {
+        $_SESSION['carrinho'][$productId]['quantidade'] += $productAmount;
+    } else {
+        $_SESSION['carrinho'][$productId] = [
+            'id' => $productId,
+            'nome' => $productName,
+            'preco' => $productPrice,
+            'quantidade' => $productAmount,
+            'imagem' => $poductImage
+        ];
+    }
 
     $response = ['success' => true, 'message' => 'Produto adicionado ao carrinho!'];
 } else {
@@ -29,4 +28,5 @@ if (isset($_POST['productId']) && isset($_POST['productName']) && isset($_POST['
 
 header('Content-Type: application/json');
 echo json_encode($response);
+
 ?>

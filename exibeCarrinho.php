@@ -17,8 +17,8 @@ function calcularTotal($carrinho)
 {
     $total = 0;
 
-    foreach ($carrinho as $itemPrice) {
-        $total += $itemPrice['preco'];
+    foreach ($carrinho as $item) {
+        $total += $item['preco'] * $item['quantidade'];
     }
 
     return $total;
@@ -32,6 +32,7 @@ function calcularTotal($carrinho)
     </header>
 
     <main class="main">
+        <div id="toast" class="toast"></div>
         <table class="cart-table">
             <thead>
                 <tr>
@@ -42,18 +43,26 @@ function calcularTotal($carrinho)
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($carrinho as $produto) : ?>
+                <?php foreach ($carrinho as $productId => $produto) : ?>
                     <tr class="cart-item2">
-                        <td class="cart-item-image"><img src="<?= $produto['imagem'] ?>" width="50"></td>
+                        <td class="cart-item-image">
+                            <div class="thumbnail-container">
+                                <img src="<?= $produto['imagem'] ?>" width="50" alt="<?= $produto['nome'] ?>">
+                                <div class="large-image-container">
+                                    <img src="<?= $produto['imagem'] ?>" alt="<?= $produto['nome'] ?>">
+                                </div>
+                            </div>
+                        </td>
                         <td class="cart-item-name"><?= $produto['nome'] ?></td>
                         <td class="cart-item-price">R$ <?= number_format($produto['preco'], 2, ',', '.') ?></td>
                         <td>
                             <div class="quantity-input">
-                                <input type="number" class="quantity" min="1" value="<?= $produto['quantidade'] ?>" data-product-id="<?= $produto['id'] ?>">
-                                <button class="update-quantity-btn" onclick="updateCartAmount()" data-product-id="<?= $produto['id'] ?>">Atualizar</button>
+                                <input type="number" class="quantity" min="1" value="<?= $produto['quantidade'] ?>" data-product-id="<?= $productId ?>" data-product-price="<?= $produto['preco'] ?>" data-current-quantity="<?= $produto['quantidade'] ?>">
+                                <button class="remove-button" data-id-product="<?= $productId ?>" data-price-product ="<?= $produto['preco']?>">
+                                    <i class="bx bx-trash"></i> Remover
+                                </button>
                             </div>
                         </td>
-
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -68,5 +77,8 @@ function calcularTotal($carrinho)
         <p id="footer-total">Total: R$ <?= number_format(calcularTotal($carrinho), 2, ',', '.') ?></p>
     </footer>
 
-<script src="updateCart.js"></script>
+    <script src="updateCart.js"></script>
+    <script src="js/zoomImagemCart.js"></script>
+    <script src="js/updateTotal.js"></script>
+    <script src="js/removeItem.js"></script>
 </body>

@@ -87,7 +87,6 @@ function abrirDetalhes(event) {
 
         xhr.send(data);
 
-        console.log(product.amount);
 
     });
     productDetails.style.right = "0";
