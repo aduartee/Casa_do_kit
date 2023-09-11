@@ -217,19 +217,20 @@ body {
 .product-details {
   position: fixed;
   top: 0;
-  right: -100%; 
+  right: -500px; 
   width: 500px;
-  height: 100%; 
-  background-color: white; 
-  transition: right 0.5s ease-in-out; 
+  height: 100%;
+  background-color: white;
+  transition: right 0.5s ease-in-out;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-  max-height: 100vh; 
-  overflow-y: auto; 
+  max-height: 100vh;
+  overflow-y: auto;
+  z-index: 999; 
 }
 
 .cards-ajuste {
-  margin-right: 280px; /* Valor que garante espaço suficiente para a div de detalhes */
-  transition: margin-right 0.5s ease; 
+  margin-right: 300px; 
+  transition: margin-right 0.5s ease;
 }
 
 .product-details-content img {
@@ -296,8 +297,12 @@ body {
   
   .product-details {
     width: 100%;
-    right: -100%; 
+    right: -100%;
     max-width: none;
+    position: fixed; /* Fixar a posição */
+    top: 0;
+    height: 100%;
+    z-index: 999; /* Garantir que fique acima de outros elementos */
   }
   
   .adiciona-pedido {
@@ -317,9 +322,9 @@ body {
     max-width: 100%;
     margin-left: 0;
   }
-
-  .adiciona-pedido { 
-    margin-left:37%;
+  
+  .adiciona-pedido {
+    margin-left: 0; /* Redefina a margem esquerda */
   }
 }
 
@@ -545,5 +550,23 @@ body {
     z-index: 999;
 }
 
+
+.swiper-container {
+  width: 100%;
+  height: 500px; 
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+}
+
+.swiper-pagination {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
 

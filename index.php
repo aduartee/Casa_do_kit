@@ -33,10 +33,17 @@ while ($row = $result->fetch_assoc()) {
 }
 ?>
 
-<div id="toast" class="toast"></div>
-
 
 <body>
+  <div id="toast" class="toast"></div>
+
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="img/carrosel/casadokit2.png" alt="Imagem 1"></div>
+      <div class="swiper-slide"><img src="img/carrosel/casadokit3.png" alt="Imagem 2"></div>
+    </div>
+  </div>
+
 
   <div class="container mt-5 text-center">
     <div class="cards-container">
@@ -216,15 +223,7 @@ while ($row = $result->fetch_assoc()) {
             <div class="card mb-3">
               <div class="zoom-image" product-image>
                 <img src="<?= BASE_URL . $row['caminho_da_imagem'] ?>" alt="Licores <?= $row['id'] ?>" class="card-img-top product-image">
-                <a href="#" class="btn btn-primary btn-buy"
-                  data-id="<?= $row['id'] ?>"
-                  data-nome="<?= $row['nome'] ?>"
-                  data-preco="<?= $row['preco'] ?>"
-                  data-imagem="<?= BASE_URL . $row['caminho_da_imagem'] ?>"
-                  data-descricao="<?= $row['descricao'] ?>"
-                  data-disponibilidade="<?= $row['disponibilidade'] ?>"
-                  data-volume="<?= $row['volume'] ?>"
-                  onclick="abrirDetalhes(event)">Comprar</a>
+                <a href="#" class="btn btn-primary btn-buy" data-id="<?= $row['id'] ?>" data-nome="<?= $row['nome'] ?>" data-preco="<?= $row['preco'] ?>" data-imagem="<?= BASE_URL . $row['caminho_da_imagem'] ?>" data-descricao="<?= $row['descricao'] ?>" data-disponibilidade="<?= $row['disponibilidade'] ?>" data-volume="<?= $row['volume'] ?>" onclick="abrirDetalhes(event)">Comprar</a>
               </div>
 
               <div class="card-body">
@@ -256,10 +255,13 @@ while ($row = $result->fetch_assoc()) {
           <span id="quantidade">1</span>
           <button class="btn-aumentar" onclick="aumentarQuantidade()">+</button>
         </div>
-        <button id="add-to-cart-button" class="btn btn-primary btn-buy mb-20" >Adicionar ao Carrinho</button>
+        <button id="add-to-cart-button" class="btn btn-primary btn-buy mb-20">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
 </body>
+
+<script src="js/carrosel.js"></script>
+
 
 </html>

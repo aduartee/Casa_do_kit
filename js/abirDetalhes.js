@@ -1,3 +1,5 @@
+var quantidadesPorProduto = {};
+
 function abrirDetalhes(event) {
     event.preventDefault();
 
@@ -12,6 +14,7 @@ function abrirDetalhes(event) {
 
     const button = event.target;
     const productId = button.getAttribute("data-id");
+    var quantidadeProduto = quantidadesPorProduto[productId] || 1;
     const nomeProduto = button.getAttribute("data-nome");
     const precoProduto = parseFloat(button.getAttribute("data-preco"));
     const imagemProduto = button.getAttribute("data-imagem");
@@ -20,6 +23,7 @@ function abrirDetalhes(event) {
     const disponibilidadeProduto = button.getAttribute("data-disponibilidade");
     const cardsContainer = document.querySelector(".cards-container");
     const qtdProduto = parseInt(document.getElementById("quantidade").textContent);
+    
 
     cardsContainer.classList.add("cards-ajuste");
 
@@ -31,9 +35,10 @@ function abrirDetalhes(event) {
         image: imagemProduto,
         description: descricaoProduto,
         availability: disponibilidadeProduto,
-        volume: volumeProduto, 
-        amount: qtdProduto
+        volume: volumeProduto,
+        amount: quantidadeProduto 
     };
+
 
     // Preencha as informações do produto na aba de detalhes
     productNameElement.textContent = product.name;
@@ -92,10 +97,29 @@ function abrirDetalhes(event) {
     productDetails.style.right = "0";
 }
 
-// Função para fechar a aba de detalhes
 function fecharDetalhes() {
     const productDetails = document.getElementById("product-details");
     const cardsContainer = document.querySelector(".cards-container");
     cardsContainer.classList.remove("cards-ajuste");
     productDetails.style.right = "-100%";
 }
+
+function aumentarQuantidade() {
+    quantidadeProduto++;
+    atualizarQuantidade();
+}
+
+function diminuirQuantidade() {
+    if (quantidadeProduto > 1) {
+        quantidadeProduto--;
+        atualizarQuantidade();
+    }
+}
+
+function atualizarQuantidade(productId) {
+    const quantidadeElement = document.getElementById('quantidade');
+    quantidadesPorProduto[productId] = quantidadeProduto;
+    quantidadeElement.textContent = quantidadeProduto.toString();
+}
+
+

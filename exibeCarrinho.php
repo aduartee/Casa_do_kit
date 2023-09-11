@@ -57,7 +57,7 @@ function calcularTotal($carrinho)
                         <td class="cart-item-price">R$ <?= number_format($produto['preco'], 2, ',', '.') ?></td>
                         <td>
                             <div class="quantity-input">
-                                <input type="number" class="quantity" min="1" value="<?= $produto['quantidade'] ?>" data-product-id="<?= $productId ?>" data-product-price="<?= $produto['preco'] ?>" data-current-quantity="<?= $produto['quantidade'] ?>">
+                                <input type="number" class="quantity" min="1" value="<?= $produto['quantidade'] ?>" data-product-id="<?= $productId ?>" data-product-price="<?= $produto['preco'] ?>" data-current-quantity="<?= $produto['quantidade'] ?>" id="quantity-<?= $productId ?>">
                                 <button class="remove-button" data-id-product="<?= $productId ?>" data-price-product ="<?= $produto['preco']?>">
                                     <i class="bx bx-trash"></i> Remover
                                 </button>

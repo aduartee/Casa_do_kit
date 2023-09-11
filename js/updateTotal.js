@@ -5,12 +5,14 @@ document.addEventListener("DOMContentLoaded", function () {
         quantityInput.addEventListener("change", function () {
             const productId = this.getAttribute("data-product-id");
             const newQuantity = parseInt(this.value);
-
-            updateCartQuantity(productId, newQuantity);
-        }); 
+            const currentQuantity = parseInt(this.dataset.currentQuantity);
+            const productPrice = parseFloat(this.dataset.productPrice);
+            
+            updateCartQuantity(productId, newQuantity, currentQuantity, productPrice);
+        });
     });
 
-    function updateCartQuantity(productId, newQuantity) {
+    function updateCartQuantity(productId, newQuantity, currentQuantity, productPrice) {
         const xhr = new XMLHttpRequest();
         xhr.open("POST", "updateQuantity.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -18,13 +20,22 @@ document.addEventListener("DOMContentLoaded", function () {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
                     const quantityInput = document.querySelector(`.quantity[data-product-id="${productId}"]`);
-                    quantityInput.value = newQuantity;
+                    quantityInput.dataset.currentQuantity = newQuantity; 
+
                     const footerTotal = document.getElementById('footer-total');
                     const currentTotal = parseFloat(footerTotal.textContent.replace('Total: R$', '').replace(',', '.'));
-                    const priceDifference = quantityInput.dataset.currentQuantity * quantityInput.dataset.productPrice;
-                    const updatedTotal = currentTotal + priceDifference;
 
-                    footerTotal.textContent = 'Total: R$ ' + updatedTotal.toFixed(2);
+                    const quantityDifference = newQuantity - currentQuantity;
+                    const priceDifference = quantityDifference * productPrice;
+                    console.log(quantityDifference);
+
+                    if (quantityDifference > 0) {
+                        const updatedTotal = currentTotal + priceDifference;
+                        footerTotal.textContent = 'Total: R$ ' + updatedTotal.toFixed(2);
+                    } else if (quantityDifference < 0) {
+                        const updatedTotal = currentTotal - Math.abs(priceDifference);
+                        footerTotal.textContent = 'Total: R$ ' + updatedTotal.toFixed(2);
+                    }
                 }
             }
         };

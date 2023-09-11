@@ -18,6 +18,8 @@
 <link rel="stylesheet" href="<?= BASE_URL ?>css/css.css">
 <script src="<?= BASE_URL ?>js/validaQtd.js"></script>
 <script src="<?= BASE_URL ?>js/abirDetalhes.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <title>Casa do Kit</title>
 
 
