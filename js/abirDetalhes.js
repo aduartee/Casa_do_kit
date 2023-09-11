@@ -96,7 +96,7 @@ function abrirDetalhes(event) {
     });
     productDetails.style.right = "0";
 }
-
+d
 function fecharDetalhes() {
     const productDetails = document.getElementById("product-details");
     const cardsContainer = document.querySelector(".cards-container");
