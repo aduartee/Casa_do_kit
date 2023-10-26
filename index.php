@@ -33,7 +33,17 @@ while ($row = $result->fetch_assoc()) {
 }
 ?>
 
+
 <body>
+  <div id="toast" class="toast"></div>
+
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="img/carrosel/casadokit2.png" alt="Imagem 1"></div>
+      <div class="swiper-slide"><img src="img/carrosel/casadokit3.png" alt="Imagem 2"></div>
+    </div>
+  </div>
+
 
   <div class="container mt-5 text-center">
     <div class="cards-container">
@@ -242,7 +252,7 @@ while ($row = $result->fetch_assoc()) {
         <p id="product-details-volume">Volume:</p>
         <div class="adiciona-pedido mb-4">
           <button class="btn-diminuir" onclick="diminuirQuantidade()">-</button>
-          <span id="quantidade">0</span>
+          <span id="quantidade">1</span>
           <button class="btn-aumentar" onclick="aumentarQuantidade()">+</button>
         </div>
         <button id="add-to-cart-button" class="btn btn-primary btn-buy mb-20">Adicionar ao Carrinho</button>
@@ -250,5 +260,8 @@ while ($row = $result->fetch_assoc()) {
     </div>
   </div>
 </body>
+
+<script src="js/carrosel.js"></script>
+
 
 </html>

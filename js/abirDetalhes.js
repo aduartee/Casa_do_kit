@@ -1,3 +1,5 @@
+var quantidadesPorProduto = {};
+
 function abrirDetalhes(event) {
     event.preventDefault();
 
@@ -12,6 +14,7 @@ function abrirDetalhes(event) {
 
     const button = event.target;
     const productId = button.getAttribute("data-id");
+    var quantidadeProduto = quantidadesPorProduto[productId] || 1;
     const nomeProduto = button.getAttribute("data-nome");
     const precoProduto = parseFloat(button.getAttribute("data-preco"));
     const imagemProduto = button.getAttribute("data-imagem");
@@ -19,7 +22,11 @@ function abrirDetalhes(event) {
     const descricaoProduto = button.getAttribute("data-descricao");
     const disponibilidadeProduto = button.getAttribute("data-disponibilidade");
     const cardsContainer = document.querySelector(".cards-container");
+    const qtdProduto = parseInt(document.getElementById("quantidade").textContent);
+    
+
     cardsContainer.classList.add("cards-ajuste");
+
 
     const product = {
         id: productId,
@@ -28,8 +35,10 @@ function abrirDetalhes(event) {
         image: imagemProduto,
         description: descricaoProduto,
         availability: disponibilidadeProduto,
-        volume: volumeProduto
+        volume: volumeProduto,
+        amount: quantidadeProduto 
     };
+
 
     // Preencha as informações do produto na aba de detalhes
     productNameElement.textContent = product.name;
@@ -40,22 +49,77 @@ function abrirDetalhes(event) {
     productImageElement.src = product.image;
 
 
-    // Ação ao clicar no botão "Adicionar ao Carrinho"
-    addToCartButton.addEventListener("click", function () {
-        // Aguardando implementação com AJAX
-        // Exemplo: addToCart(product.id);
-        alert("Produto adicionado ao carrinho!");
-    });
+    function showToast(message, type) {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.classList.add(type);
+        toast.style.display = 'block';
+    
+        setTimeout(() => {
+            toast.style.display = 'none';
+            toast.classList.remove(type);
+        }, 3000);
+    }
 
+
+    addToCartButton.addEventListener("click", function () {
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "carrinho.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                    if (response.success) {
+                        showToast("Produto adicionado ao carrinho", "success");
+                        const contadorCarrinho = document.getElementById("contador-carrinho");
+                        contadorCarrinho.textContent = parseInt(contadorCarrinho.textContent) + 1;
+                        contadorCarrinho.style.display = "block";
+                    } else {
+                        showToast("Erro ao adicionar o produto ao carrinho.", "error");
+                    }
+                }
+            }
+        };
+
+        // Preparar dados para enviar
+        const data = new URLSearchParams();
+        data.append("productId", product.id);
+        data.append("productName", product.name);
+        data.append("productPrice", product.price);
+        data.append("productImage", product.image);
+        data.append("productAmount", product.amount);
+
+        xhr.send(data);
+
+
+    });
     productDetails.style.right = "0";
 }
-
-// Função para fechar a aba de detalhes
+d
 function fecharDetalhes() {
     const productDetails = document.getElementById("product-details");
     const cardsContainer = document.querySelector(".cards-container");
     cardsContainer.classList.remove("cards-ajuste");
     productDetails.style.right = "-100%";
-    
-
 }
+
+function aumentarQuantidade() {
+    quantidadeProduto++;
+    atualizarQuantidade();
+}
+
+function diminuirQuantidade() {
+    if (quantidadeProduto > 1) {
+        quantidadeProduto--;
+        atualizarQuantidade();
+    }
+}
+
+function atualizarQuantidade(productId) {
+    const quantidadeElement = document.getElementById('quantidade');
+    quantidadesPorProduto[productId] = quantidadeProduto;
+    quantidadeElement.textContent = quantidadeProduto.toString();
+}
+
+

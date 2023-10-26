@@ -1,4 +1,5 @@
-<?php define('BASE_URL', 'http://localhost/casadokit/')?>
+<?php define('BASE_URL', 'http://localhost/casadokit/'); 
+?>
 
 <!-- Font Awesome -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -10,17 +11,20 @@
 <!-- BOXICONS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css">
 
+<link rel="shortcut icon" href="img/favicon-16x16.png" type="image/x-icon">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" href="<?= BASE_URL ?>css/css.css">
 <script src="<?= BASE_URL ?>js/validaQtd.js"></script>
-<script src="<?= BASE_URL ?>js/adicionaCarrinho.js"></script>
 <script src="<?= BASE_URL ?>js/abirDetalhes.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <title>Casa do Kit</title>
 
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <!-- Container wrapper -->
     <div class="container-fluid">
         <!-- Toggle button -->
@@ -31,8 +35,8 @@
         <!-- Collapsible wrapper -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Navbar brand -->
-            <a class="navbar-brand mt-1 mt-lg-0" href="#">
-                <img src="img/casadokit.png" height="100" alt="MDB Logo" loading="lazy" />
+            <a class="navbar-brand mt-1 mt-lg-0" href="index.php">
+                <img src="img/casadokit.png" height="100" href="index.php" alt="Logo Casa do Kit" loading="lazy" />
             </a>
             <!-- Left links -->
 
@@ -42,7 +46,7 @@
                     <i class="fas fa-search"></i>
                 </button>
             </form>
-              
+
 
 
 
@@ -75,13 +79,17 @@
 
         <!-- Right elements -->
         <div class="d-flex align-items-center">
-            <!-- Icon -->
-            <a class="text-reset me-3" href="#">
-                <i class="fas fa-shopping-cart text-white"></i>
-            </a>
+            <!-- Carrinho -->
+            <div id="carrinho" class="carrinho-icon me-10">
+                <a href="<?= BASE_URL ?>exibeCarrinho.php" class="text-reset" href="#">
+                    <i class="fas fa-shopping-cart text-white"></i>
+                    <span id="contador-carrinho">0</span>
+                </a>
+            </div>
+
 
             <!-- Notifications -->
-            <div class="dropdown">
+            <div class="dropdown me-1">
                 <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-bell text-white"></i>
                     <span class="badge rounded-pill badge-notification bg-danger">1</span>
@@ -94,9 +102,9 @@
             </div>
             <!-- Avatar -->
             <div class="dropdown">
-                <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                <!-- <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                     <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
-                </a>
+                </a> -->
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                     <li>
                         <a class="dropdown-item" href="#">My profile</a>
